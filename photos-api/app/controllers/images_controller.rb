@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
 
   # GET /images
   def index
-    @images = Image.all
+    @images = params[:photographer_id] ? Image.where(photographer_id: params[:photographer_id]) : Image.all
 
     render json: @images
   end
