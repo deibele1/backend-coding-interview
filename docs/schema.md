@@ -61,3 +61,14 @@ SRC {
 PHOTOGRAPHER ||--o{ IMAGE : has
 IMAGE ||--|| SRC : has
 ```
+## Endpoints
+api endpoints will include:
+* /photographers
+* /photographers/:id
+* /photographers/:id/images
+* /phogographers/:id/images/:id
+* /images
+* /images/:id
+
+We will support standard crud operations on all endpoints
+
