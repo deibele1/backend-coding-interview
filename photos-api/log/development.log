@@ -1,0 +1,29 @@
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='PhotosApi'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='PhotosApi'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='PhotosApi'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-01-29 03:36:56.227751', '2026-01-29 03:36:56.227752') RETURNING "key" /*application='PhotosApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PhotosApi'*/[0m
+Migrating to CreatePhotographers (20260129032429)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PhotosApi'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "photographers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "photographer_id" integer, "photographer" varchar, "photographer_url" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='PhotosApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260129032429') RETURNING "version" /*application='PhotosApi'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PhotosApi'*/[0m
+Migrating to CreateImages (20260129032430)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PhotosApi'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "images" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "external_id" integer, "width" integer, "height" integer, "url" varchar, "avg_color" varchar, "alt" varchar, "photographer_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_b859e0b01d"
+FOREIGN KEY ("photographer_id")
+  REFERENCES "photographers" ("id")
+) /*application='PhotosApi'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_images_on_photographer_id" ON "images" ("photographer_id") /*application='PhotosApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260129032430') RETURNING "version" /*application='PhotosApi'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PhotosApi'*/[0m
+Migrating to CreateSrcs (20260129032431)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PhotosApi'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "srcs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "original" varchar, "large2x" varchar, "large" varchar, "medium" varchar, "small" varchar, "portrait" varchar, "landscape" varchar, "tiny" varchar, "image_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_410d1aacbd"
+FOREIGN KEY ("image_id")
+  REFERENCES "images" ("id")
+) /*application='PhotosApi'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_srcs_on_image_id" ON "srcs" ("image_id") /*application='PhotosApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260129032431') RETURNING "version" /*application='PhotosApi'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PhotosApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PhotosApi'*/[0m
