@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  external_id: 1
+  width: 1
+  height: 1
+  url: MyString
+  avg_color: MyString
+  alt: MyString
+  photographer: one
+
+two:
+  external_id: 1
+  width: 1
+  height: 1
+  url: MyString
+  avg_color: MyString
+  alt: MyString
+  photographer: two

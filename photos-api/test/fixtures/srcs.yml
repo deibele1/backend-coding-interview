@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  original: MyString
+  large2x: MyString
+  large: MyString
+  medium: MyString
+  small: MyString
+  portrait: MyString
+  landscape: MyString
+  tiny: MyString
+  image: one
+
+two:
+  original: MyString
+  large2x: MyString
+  large: MyString
+  medium: MyString
+  small: MyString
+  portrait: MyString
+  landscape: MyString
+  tiny: MyString
+  image: two
