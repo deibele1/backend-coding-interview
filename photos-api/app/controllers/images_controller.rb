@@ -10,7 +10,7 @@ class ImagesController < ApplicationController
 
   # GET /images/1
   def show
-    render json: @image
+    render json: @image, include: :src
   end
 
   # POST /images
